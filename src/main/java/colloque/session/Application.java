@@ -12,9 +12,13 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
 public class Application {
     public static void main(String[] args) {
-
+        /*
         HibernateUtils hibernateUtils = new HibernateUtils();
 
         ParticipantService serviceP = new ParticipantService();
@@ -53,6 +57,9 @@ public class Application {
         for (Participant participant: participants) {
             System.out.println(participant.toString());
         }
+        */
+
+        SpringApplication.run(Application.class, args);
 
     }
 }
