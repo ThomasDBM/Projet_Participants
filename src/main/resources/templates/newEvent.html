@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns=http://www.w3.org/1999/xhtml
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;
+charset=UTF-8" />
+</head>
+<body>
+    <div th:if="${errorMessage!=null}"
+     style="color:red;font-style:italic" th:utext="${errorMessage}">..</div>
+    <form th:action="@{/newEvent}" th:object="${newEventForm}" method="POST">
+        <input type="text" th:field="*{intitule}">Intitulé</input>
+        <input type="text" th:field="*{theme}">Thème</input>
+        <input type="text" th:field="*{date_debut}">Date de début</input>
+        <input type="text" th:field="*{duree}">Durée</input>
+        <input type="text" th:field="*{nb_part_max}">Nombre de participants max</input>
+        <input type="text" th:field="*{description}">Description</input>
+        <input type="text" th:field="*{organisateur}">Organisateur</input>
+        <input type="text" th:field="*{type_even}">Type d'évènement</input>
+        <input type="text" th:field="*{participants}">Participants</input>
+        <input type="submit" value="Valider" />
+    </form>
+</body>
+</html>

@@ -36,6 +36,24 @@ public class EvenementServices {
         }
     }
 
+    public long create(Evenement evenement) {
+        Session session = sessionFactory.openSession();
+        Transaction tx =null;
+        try {
+            tx=session.beginTransaction();
+            session.persist(evenement);
+            tx.commit();
+            session.close();
+            return 0;
+        } catch (HibernateException e){
+            if (tx != null) {
+                tx.rollback();
+                session.close();
+            }
+            throw e;
+        }
+    }
+
     public boolean delete(long id) {
         Session session = sessionFactory.openSession();
         Transaction tx =null;
