@@ -129,6 +129,7 @@ public class Evenement {
         this.type_even = type_even;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
