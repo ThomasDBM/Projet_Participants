@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-public class MainController {
+public class EvenementController {
     @Autowired
     private EvenementServices evenementServices;
 
@@ -21,9 +21,19 @@ public class MainController {
 
     @PostMapping("add/Event")
     public String postEventForm(@ModelAttribute Evenement newEventForm) {
-        System.out.println(newEventForm);
         evenementServices.create(newEventForm);
         return "redirect:/";
     }
 
+    @GetMapping("all/Event")
+    public String getAllEvent(Model model){
+        model.addAttribute("events", evenementServices.getAll());
+        return "allEvent";
+    }
+
+    @PostMapping("delete/Event/{id}")
+    public String deleteEvent(@PathVariable long id){
+        evenementServices.delete(id);
+        return "redirect:/all/Event";
+    }
 }
