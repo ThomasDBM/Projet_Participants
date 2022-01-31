@@ -10,15 +10,15 @@ charset=UTF-8" />
 <div th:if="${errorMessage!=null}"
      style="color:red;font-style:italic" th:utext="${errorMessage}">..</div>
 <form action="#" th:action="@{/modify/Event}" th:object="${modifyEventForm}" method="POST">
-    <input type="text" th:field="*{num_event}" th:value="${modifyEventForm.getNum_event()}" hidden/>
-    <input type="text" th:field="*{intitule}" th:value="${modifyEventForm.getIntitule()}">Intitulé</input>
-    <input type="text" th:field="*{theme}" th:value="${modifyEventForm.getTheme()}">Thème</input>
-    <input type="date" th:field="*{date_debut}" th:value="${modifyEventForm.getDate_debut()}">Date de début</input>
-    <input type="text" th:field="*{duree}" th:value="${modifyEventForm.getDuree()}">Durée</input>
-    <input type="text" th:field="*{nb_part_max}" th:value="${modifyEventForm.getNb_part_max()}">Nombre de participants max</input>
-    <input type="text" th:field="*{description}" th:value="${modifyEventForm.getDescription()}">Description</input>
-    <input type="text" th:field="*{organisateur}" th:value="${modifyEventForm.getOrganisateur()}">Organisateur</input>
-    <input type="text" th:field="*{type_even}" th:value="${modifyEventForm.getType_even()}">Type d'évènement</input>
+    <input required type="text" th:field="*{num_event}" th:value="${modifyEventForm.getNum_event()}" hidden/>
+    <input required type="text" th:field="*{intitule}" th:value="${modifyEventForm.getIntitule()}">Intitulé</input>
+    <input required type="text" th:field="*{theme}" th:value="${modifyEventForm.getTheme()}">Thème</input>
+    <input required type="date" th:field="*{date_debut}" th:value="${modifyEventForm.getDate_debut()}">Date de début</input>
+    <input required type="number" th:field="*{duree}" th:value="${modifyEventForm.getDuree()}">Durée</input>
+    <input required type="number" th:field="*{nb_part_max}" th:value="${modifyEventForm.getNb_part_max()}">Nombre de participants max</input>
+    <input required type="text" th:field="*{description}" th:value="${modifyEventForm.getDescription()}">Description</input>
+    <input required type="text" th:field="*{organisateur}" th:value="${modifyEventForm.getOrganisateur()}">Organisateur</input>
+    <input required type="text" th:field="*{type_even}" th:value="${modifyEventForm.getType_even()}">Type d'évènement</input>
     <input type="submit" value="Valider">
 </form>
 </body>

@@ -9,15 +9,15 @@ charset=UTF-8" />
     <div th:if="${errorMessage!=null}"
      style="color:red;font-style:italic" th:utext="${errorMessage}">..</div>
     <form action="#" th:action="@{/add/Event}" th:object="${newEventForm}" method="POST">
-        <input type="text" th:field="*{num_event}" hidden/>
-        <input type="text" th:field="*{intitule}">Intitulé</input>
-        <input type="text" th:field="*{theme}">Thème</input>
-        <input type="date" th:field="*{date_debut}">Date de début</input>
-        <input type="text" th:field="*{duree}">Durée</input>
-        <input type="text" th:field="*{nb_part_max}">Nombre de participants max</input>
-        <input type="text" th:field="*{description}">Description</input>
-        <input type="text" th:field="*{organisateur}">Organisateur</input>
-        <input type="text" th:field="*{type_even}">Type d'évènement</input>
+        <input required type="text" th:field="*{num_event}" hidden/>
+        <input required type="text" th:field="*{intitule}">Intitulé</input>
+        <input required type="text" th:field="*{theme}">Thème</input>
+        <input required type="date" th:field="*{date_debut}">Date de début</input>
+        <input required type="number" th:field="*{duree}">Durée</input>
+        <input required type="number" th:field="*{nb_part_max}">Nombre de participants max</input>
+        <input required type="text" th:field="*{description}">Description</input>
+        <input required type="text" th:field="*{organisateur}">Organisateur</input>
+        <input required type="text" th:field="*{type_even}">Type d'évènement</input>
         <input type="submit" value="Valider">
     </form>
 </body>

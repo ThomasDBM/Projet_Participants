@@ -32,5 +32,40 @@ public class ParticipantController {
         return "newParticipant";
     }
 
+    @GetMapping("voir/Participant/{id}")
+    public String voirParticipant(Model model,@PathVariable long id){
+        Evenement event = evenementServices.getEvent(id);
+        List<Participant> Participants = event.getParticipants();
+        model.addAttribute("participants", Participants );
+        return "listParticipant";
+    }
+
+    @PostMapping("/delete/Participant/{idEvent}/{idParticipant}")
+    public String deleteEvent(@PathVariable long idEvent,@PathVariable long idParticipant){
+        Evenement event = evenementServices.getEvent(idEvent);
+        List<Participant> Participants = event.getParticipants();
+        for (int i = 0; i<Participants.size();i++){
+            if (Participants.get(i).getNum_pers() == idParticipant){
+                Participants.remove(i);
+            }
+        }
+        event.setParticipants(Participants);
+        evenementServices.create(event);
+        participantServices.delete(idParticipant);
+        return "redirect:/voir/Participant/"+idEvent;
+    }
+
+    @GetMapping("/modify/Participant/{idEvent}/{idParticipant}")
+    public String modifyEvent(Model model,@PathVariable long idEvent,@PathVariable long idParticipant){
+        Participant participant = participantServices.getById(idParticipant);
+        model.addAttribute("modifyParticipantForm", participant);
+        return "modifyParticipant";
+    }
+
+    @PostMapping("modify/Participant/{idEvent}/{idParticipant}")
+    public String postModifiedEventForm(@ModelAttribute Participant modifyParticipantForm,@PathVariable long idEvent) {
+        participantServices.create(modifyParticipantForm);
+        return "redirect:/voir/Participant/"+idEvent;
+    }
 
 }

@@ -133,6 +133,13 @@ public class Evenement {
         this.type_even = type_even;
     }
 
+    public List<Participant> getParticipants() {
+        return participants;
+    }
+    public void setParticipants(List<Participant> participants) {
+        this.participants = participants;
+    }
+
     public void addParticipant(Participant participant){
         this.participants.add(participant);
     }

@@ -1,11 +1,9 @@
 package colloque.metier;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.Objects;
 
@@ -27,6 +25,8 @@ public class Participant {
     private String email;
 
     @Column(name = "date_naiss", nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date date_naiss;
 
     @Column(name = "organisation", nullable = false)

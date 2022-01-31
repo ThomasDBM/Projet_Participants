@@ -61,6 +61,6 @@ public class EvenementController {
         Evenement event = evenementServices.getEvent(id);
         event.addParticipant(newParticipantForm);
         evenementServices.create(event);
-        return "redirect:/";
+        return "redirect:/all/Event";
     }
 }

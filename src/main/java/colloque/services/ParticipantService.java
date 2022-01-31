@@ -22,4 +22,12 @@ public class ParticipantService {
         List<Participant> list = (List<Participant>) participantRepository.findAll();
         return list;
     }
+
+    public void delete(long id){
+        participantRepository.deleteById(id);
+    }
+
+    public Participant getById(long id){
+        return participantRepository.findById(id).get();
+    }
 }
