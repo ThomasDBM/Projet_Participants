@@ -35,5 +35,8 @@ public class EvenementServices {
         return list;
     }
 
+    public Evenement getbyId(long id){
+        return evenementRepository.findById(id).get();
+    }
 
 }

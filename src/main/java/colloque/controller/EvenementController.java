@@ -1,7 +1,9 @@
 package colloque.controller;
 
 import colloque.metier.Evenement;
+import colloque.metier.Participant;
 import colloque.services.EvenementServices;
+import colloque.services.ParticipantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,8 +12,10 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class EvenementController {
     @Autowired
-    private EvenementServices evenementServices;
+    private ParticipantService participantServices;
 
+    @Autowired
+    private EvenementServices evenementServices;
 
     @GetMapping("add/Event")
     public String getEventForm(Model model){
@@ -36,4 +40,13 @@ public class EvenementController {
         evenementServices.delete(id);
         return "redirect:/all/Event";
     }
+
+    @PostMapping("add/Participant")
+    public String postParticipantForm(@ModelAttribute Participant newParticipantForm, @ModelAttribute Evenement event) {
+        participantServices.create(newParticipantForm);
+        event.addParticipant(newParticipantForm);
+        evenementServices.create(event);
+        return "redirect:/";
+    }
+
 }
