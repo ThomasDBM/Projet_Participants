@@ -23,10 +23,12 @@ public class ParticipantController {
     @Autowired
     private EvenementServices evenementServices;
 
-    @PostMapping("create/Participant")
-    public String getEventForm(@ModelAttribute Evenement event, Model model){
-        model.addAttribute("event", event);
+    @GetMapping("create/Participant/{id}")
+    public String getEventForm(Model model,@PathVariable long id){
+        Evenement event = evenementServices.getEvent(id);
         model.addAttribute("newParticipantForm", new Participant());
+        System.out.println("#################################");
+        System.out.println(event.getNum_event());
         return "newParticipant";
     }
 

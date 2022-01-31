@@ -24,7 +24,9 @@ public class Evenement {
     private String theme;
 
     @Column(name = "date_debut", nullable = false)
-    private String date_debut;
+    @Temporal(TemporalType.TIMESTAMP)
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    private Date date_debut;
 
     @Column(name = "duree", nullable = false)
     private Double duree;
@@ -47,7 +49,7 @@ public class Evenement {
     public Evenement() {
     }
 
-    public Evenement(String intitule, String theme, String date_debut, Double duree, int nb_part_max, String description, String organisateur, String type_even, List<Participant> participants)  {
+    public Evenement(String intitule, String theme, Date date_debut, Double duree, int nb_part_max, String description, String organisateur, String type_even, List<Participant> participants)  {
         this.intitule = intitule;
         this.theme = theme;
         this.date_debut = date_debut;
@@ -83,11 +85,11 @@ public class Evenement {
         this.theme = theme;
     }
 
-    public String getDate_debut() {
+    public Date getDate_debut() {
         return date_debut;
     }
 
-    public void setDate_debut(String date_debut) {
+    public void setDate_debut(Date date_debut) {
         this.date_debut = date_debut;
     }
 

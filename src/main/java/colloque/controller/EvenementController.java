@@ -17,6 +17,7 @@ public class EvenementController {
     @Autowired
     private EvenementServices evenementServices;
 
+
     @GetMapping("add/Event")
     public String getEventForm(Model model){
         model.addAttribute("newEventForm", new Evenement());
@@ -41,12 +42,25 @@ public class EvenementController {
         return "redirect:/all/Event";
     }
 
-    @PostMapping("add/Participant")
-    public String postParticipantForm(@ModelAttribute Participant newParticipantForm, @ModelAttribute Evenement event) {
+    @GetMapping("modify/Event/{id}")
+    public String modifyEvent(Model model,@PathVariable long id){
+        Evenement event = evenementServices.getEvent(id);
+        model.addAttribute("modifyEventForm", event);
+        return "modifyEvent";
+    }
+
+    @PostMapping("modify/Event")
+    public String postModifiedEventForm(@ModelAttribute Evenement modifyEventForm) {
+        evenementServices.create(modifyEventForm);
+        return "redirect:/all/Event";
+    }
+
+    @PostMapping("add/Participant/{id}")
+    public String postParticipantForm(@ModelAttribute Participant newParticipantForm,@PathVariable long id) {
         participantServices.create(newParticipantForm);
+        Evenement event = evenementServices.getEvent(id);
         event.addParticipant(newParticipantForm);
         evenementServices.create(event);
         return "redirect:/";
     }
-
 }
