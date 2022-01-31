@@ -1,6 +1,7 @@
 package colloque.metier;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -23,6 +24,8 @@ public class Evenement {
     private String theme;
 
     @Column(name = "date_debut", nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date date_debut;
 
     @Column(name = "duree", nullable = false)

@@ -36,4 +36,17 @@ public class EvenementController {
         evenementServices.delete(id);
         return "redirect:/all/Event";
     }
+
+    @GetMapping("modify/Event/{id}")
+    public String modifyEvent(Model model,@PathVariable long id){
+        Evenement event = evenementServices.getEvent(id);
+        model.addAttribute("modifyEventForm", event);
+        return "modifyEvent";
+    }
+
+    @PostMapping("modify/Event")
+    public String postModifiedEventForm(@ModelAttribute Evenement modifyEventForm) {
+        evenementServices.create(modifyEventForm);
+        return "redirect:/all/Event";
+    }
 }

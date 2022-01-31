@@ -20,6 +20,7 @@ charset=UTF-8" />
             <th>Organisateur</th>
             <th>Type</th>
             <th>Supprimer</th>
+            <th>Modifier</th>
         </tr>
         </thead>
         <tbody>
@@ -35,6 +36,11 @@ charset=UTF-8" />
             <td>
                 <form action="#" th:action="@{'/delete/Event/{id}' (id=${event.getNum_event()})}" method="POST">
                     <button> Supprimer </button>
+                </form>
+            </td>
+            <td>
+                <form action="#" th:action="@{'/modify/Event/{id}' (id=${event.getNum_event()})}" method="GET">
+                    <button> Modifier </button>
                 </form>
             </td>
         </tr>

@@ -30,6 +30,8 @@ public class EvenementServices {
         evenementRepository.deleteById(id);
     }
 
+    public Evenement getEvent(long id) {return evenementRepository.findById(id).get();}
+
     public List<Evenement> getAll(){
         List<Evenement> list = (List<Evenement>) evenementRepository.findAll();
         return list;
