@@ -13,7 +13,7 @@ charset=UTF-8" />
     <input type="text" th:field="*{num_event}" th:value="${modifyEventForm.getNum_event()}" hidden/>
     <input type="text" th:field="*{intitule}" th:value="${modifyEventForm.getIntitule()}">Intitulé</input>
     <input type="text" th:field="*{theme}" th:value="${modifyEventForm.getTheme()}">Thème</input>
-    <input type="text" th:field="*{date_debut}" th:value="${modifyEventForm.getDate_debut()}">Date de début</input>
+    <input type="date" th:field="*{date_debut}" th:value="${modifyEventForm.getDate_debut()}">Date de début</input>
     <input type="text" th:field="*{duree}" th:value="${modifyEventForm.getDuree()}">Durée</input>
     <input type="text" th:field="*{nb_part_max}" th:value="${modifyEventForm.getNb_part_max()}">Nombre de participants max</input>
     <input type="text" th:field="*{description}" th:value="${modifyEventForm.getDescription()}">Description</input>

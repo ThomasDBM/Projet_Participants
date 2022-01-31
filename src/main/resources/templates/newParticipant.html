@@ -9,7 +9,7 @@ charset=UTF-8" />
 <body>
 <div th:if="${errorMessage!=null}"
      style="color:red;font-style:italic" th:utext="${errorMessage}">..</div>
-<form action="#" th:action="@{/add/Participant}" th:object="${newParticipantForm}" method="POST">
+<form action="#" th:action="@{'/add/Participant/{id}' (id=${id})}" th:object="${newParticipantForm}" method="POST">
     <input type="text" th:field="*{num_pers}" hidden/>
     <input type="text" th:field="*{nom}">Nom</input>
     <input type="text" th:field="*{prenom}">Prénom</input>

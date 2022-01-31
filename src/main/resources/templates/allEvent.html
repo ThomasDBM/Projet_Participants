@@ -20,6 +20,7 @@ charset=UTF-8" />
             <th>Organisateur</th>
             <th>Type</th>
             <th>Supprimer</th>
+            <th>Ajouter participant</th>
             <th>Modifier</th>
         </tr>
         </thead>
@@ -36,6 +37,11 @@ charset=UTF-8" />
             <td>
                 <form action="#" th:action="@{'/delete/Event/{id}' (id=${event.getNum_event()})}" method="POST">
                     <button> Supprimer </button>
+                </form>
+            </td>
+            <td>
+                <form action="#" th:action="@{'/create/Participant/{id}' (id=${event.getNum_event()})}" method="GET">
+                    <button> Ajouter  </button>
                 </form>
             </td>
             <td>

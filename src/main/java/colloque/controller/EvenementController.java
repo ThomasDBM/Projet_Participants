@@ -1,7 +1,9 @@
 package colloque.controller;
 
 import colloque.metier.Evenement;
+import colloque.metier.Participant;
 import colloque.services.EvenementServices;
+import colloque.services.ParticipantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +11,9 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class EvenementController {
+    @Autowired
+    private ParticipantService participantServices;
+
     @Autowired
     private EvenementServices evenementServices;
 
@@ -48,5 +53,14 @@ public class EvenementController {
     public String postModifiedEventForm(@ModelAttribute Evenement modifyEventForm) {
         evenementServices.create(modifyEventForm);
         return "redirect:/all/Event";
+    }
+
+    @PostMapping("add/Participant/{id}")
+    public String postParticipantForm(@ModelAttribute Participant newParticipantForm,@PathVariable long id) {
+        participantServices.create(newParticipantForm);
+        Evenement event = evenementServices.getEvent(id);
+        event.addParticipant(newParticipantForm);
+        evenementServices.create(event);
+        return "redirect:/";
     }
 }

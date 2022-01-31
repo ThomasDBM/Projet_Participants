@@ -133,6 +133,9 @@ public class Evenement {
         this.type_even = type_even;
     }
 
+    public void addParticipant(Participant participant){
+        this.participants.add(participant);
+    }
 
     @Override
     public boolean equals(Object o) {
