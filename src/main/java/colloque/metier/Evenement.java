@@ -3,9 +3,10 @@ package colloque.metier;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 @Entity
 public class Evenement {
@@ -40,12 +41,12 @@ public class Evenement {
     private String type_even;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    private Set<Participant> participants;
+    private List<Participant> participants = new ArrayList<>();
 
     public Evenement() {
     }
 
-    public Evenement(String intitule, String theme, Date date_debut, Double duree, int nb_part_max, String description, String organisateur, String type_even, Set<Participant> participants)  {
+    public Evenement(String intitule, String theme, Date date_debut, Double duree, int nb_part_max, String description, String organisateur, String type_even, List<Participant> participants)  {
         this.intitule = intitule;
         this.theme = theme;
         this.date_debut = date_debut;

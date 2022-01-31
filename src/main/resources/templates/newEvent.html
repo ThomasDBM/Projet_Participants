@@ -8,7 +8,8 @@ charset=UTF-8" />
 <body>
     <div th:if="${errorMessage!=null}"
      style="color:red;font-style:italic" th:utext="${errorMessage}">..</div>
-    <form th:action="@{/newEvent}" th:object="${newEventForm}" method="POST">
+    <form action="#" th:action="@{/add/Event}" th:object="${newEventForm}" method="POST">
+        <input type="text" th:field="*{num_event}" hidden/>
         <input type="text" th:field="*{intitule}">Intitulé</input>
         <input type="text" th:field="*{theme}">Thème</input>
         <input type="text" th:field="*{date_debut}">Date de début</input>
@@ -17,8 +18,7 @@ charset=UTF-8" />
         <input type="text" th:field="*{description}">Description</input>
         <input type="text" th:field="*{organisateur}">Organisateur</input>
         <input type="text" th:field="*{type_even}">Type d'évènement</input>
-        <input type="text" th:field="*{participants}">Participants</input>
-        <input type="submit" value="Valider" />
+        <input type="submit" value="Valider">
     </form>
 </body>
 </html>
