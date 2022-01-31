@@ -21,9 +21,19 @@ public class EvenementController {
 
     @PostMapping("add/Event")
     public String postEventForm(@ModelAttribute Evenement newEventForm) {
-        System.out.println(newEventForm);
         evenementServices.create(newEventForm);
         return "redirect:/";
     }
 
+    @GetMapping("all/Event")
+    public String getAllEvent(Model model){
+        model.addAttribute("events", evenementServices.getAll());
+        return "allEvent";
+    }
+
+    @PostMapping("delete/Event/{id}")
+    public String deleteEvent(@PathVariable long id){
+        evenementServices.delete(id);
+        return "redirect:/all/Event";
+    }
 }

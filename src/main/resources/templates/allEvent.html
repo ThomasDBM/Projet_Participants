@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns=http://www.w3.org/1999/xhtml
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;
+charset=UTF-8" />
+</head>
+<body>
+    <div th:if="${errorMessage!=null}"
+         style="color:red;font-style:italic" th:utext="${errorMessage}">..</div>
+    <table>
+        <thead>
+        <tr>
+            <th>Titre</th>
+            <th>Theme</th>
+            <th>Date de début</th>
+            <th>Durée</th>
+            <th>Nombre de participants max</th>
+            <th>Description</th>
+            <th>Organisateur</th>
+            <th>Type</th>
+            <th>Supprimer</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="event : ${events}">
+            <td th:text="${event.getIntitule()}" />
+            <td th:text="${event.getTheme()}" />
+            <td th:text="${event.getDate_debut()}" />
+            <td th:text="${event.getDuree()}" />
+            <td th:text="${event.getNb_part_max()}" />
+            <td th:text="${event.getDescription()}" />
+            <td th:text="${event.getOrganisateur()}" />
+            <td th:text="${event.getType_even()}" />
+            <td>
+                <form action="#" th:action="@{'/delete/Event/{id}' (id=${event.getNum_event()})}" method="POST">
+                    <button> Supprimer </button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</body>
+</html>

@@ -26,8 +26,14 @@ public class EvenementServices {
         evenementRepository.save(evenement);
     }
 
+    public void delete(long id){
+        evenementRepository.deleteById(id);
+    }
+
     public List<Evenement> getAll(){
         List<Evenement> list = (List<Evenement>) evenementRepository.findAll();
         return list;
     }
+
+
 }
