@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns=http://www.w3.org/1999/xhtml
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;
+charset=UTF-8" />
+    <link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link type="text/css" th:href="@{/webjars/bootstrap/3.3.6/css/bootstrap.min.css} " rel="stylesheet">
+</head>
+<body>
+    <div th:if="${errorMessage!=null}"
+     style="color:red;font-style:italic" th:utext="${errorMessage}">..</div>
+
+    <form action="#" th:action="@{/add/Event}" th:object="${newEventForm}" method="POST">
+        <input required type="text" th:field="*{num_event}" hidden/>
+        <div class="form-group row"> <label>Intitulé</label><input required type="text" th:field="*{intitule}"></input> </div>
+        <div class="form-group row"> <label>Thème</label><input required type="text" th:field="*{theme}"></input></div>
+        <div class="form-group row"> <label>Date de début</label><input required type="date" th:field="*{date_debut}"></input></div>
+        <div class="form-group row"> <label>Durée</label><input required type="number" th:field="*{duree}"></input></div>
+        <div class="form-group row"> <label>Nombre de participants max</label><input required type="number" th:field="*{nb_part_max}"></input></div>
+        <div class="form-group row"> <label>Description</label><input required type="text" th:field="*{description}"></input></div>
+        <div class="form-group row"> <label>Organisateur</label><input required type="text" th:field="*{organisateur}"></input></div>
+        <div class="form-group row"> <label>Type d'évènement</label><input required type="text" th:field="*{type_even}"></input></div>
+        <div class="form-group row"> <input type="submit" value="Valider"> </div>
+    </form>
+</body>
+</html>

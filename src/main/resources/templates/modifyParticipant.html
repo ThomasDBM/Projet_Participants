@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns=http://www.w3.org/1999/xhtml
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;
+charset=UTF-8" />
+    <title>Modify Participant</title>
+    <link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link type="text/css" th:href="@{/webjars/bootstrap/3.3.6/css/bootstrap.min.css} " rel="stylesheet">
+</head>
+<body>
+<div th:if="${errorMessage!=null}"
+     style="color:red;font-style:italic" th:utext="${errorMessage}">..</div>
+<form action="#" th:action="@{'/modify/Participant/{idEvent}/{idParticipant}' (idEvent=${idEvent},idParticipant=${idParticipant})}" th:object="${modifyParticipantForm}" method="POST">
+    <input required type="text" th:field="*{num_pers}" th:value="${modifyParticipantForm.getNum_pers()}" hidden/>
+    <div class="form-group row"><label>Nom</label><input required type="text" th:field="*{nom}" th:value="${modifyParticipantForm.getNom()}"/></div>
+    <div class="form-group row"><label>Prénom</label><input required type="text" th:field="*{prenom}" th:value="${modifyParticipantForm.getPrenom()}"/></div>
+    <div class="form-group row"><label>email</label><input required type="text" th:field="*{email}" th:value="${modifyParticipantForm.getEmail()}"/></div>
+    <div class="form-group row"> <label>Date de naissance</label><input required type="date" th:field="*{date_naiss}" th:value="${modifyParticipantForm.getDate_naiss()}"/></div>
+    <div class="form-group row"> <label>Organisation</label><input required type="text" th:field="*{organisation}" th:value="${modifyParticipantForm.getOrganisation()}"/></div>
+    <div class="form-group row"> <label>Observation</label><input required type="text" th:field="*{observation}" th:value="${modifyParticipantForm.getObservation()}"/></div>
+    <input type="submit" value="Valider">
+</form>
+</body>
+</html>

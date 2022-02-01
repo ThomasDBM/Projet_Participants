@@ -1,11 +1,13 @@
 package colloque.metier;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 @Entity
 public class Evenement {
@@ -22,6 +24,8 @@ public class Evenement {
     private String theme;
 
     @Column(name = "date_debut", nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date date_debut;
 
     @Column(name = "duree", nullable = false)
@@ -40,12 +44,12 @@ public class Evenement {
     private String type_even;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    private Set<Participant> participants;
+    private List<Participant> participants = new ArrayList<>();
 
     public Evenement() {
     }
 
-    public Evenement(String intitule, String theme, Date date_debut, Double duree, int nb_part_max, String description, String organisateur, String type_even, Set<Participant> participants)  {
+    public Evenement(String intitule, String theme, Date date_debut, Double duree, int nb_part_max, String description, String organisateur, String type_even, List<Participant> participants)  {
         this.intitule = intitule;
         this.theme = theme;
         this.date_debut = date_debut;
@@ -127,6 +131,17 @@ public class Evenement {
 
     public void setType_even(String type_even) {
         this.type_even = type_even;
+    }
+
+    public List<Participant> getParticipants() {
+        return participants;
+    }
+    public void setParticipants(List<Participant> participants) {
+        this.participants = participants;
+    }
+
+    public void addParticipant(Participant participant){
+        this.participants.add(participant);
     }
 
     @Override

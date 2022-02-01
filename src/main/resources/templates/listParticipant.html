@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html xmlns=http://www.w3.org/1999/xhtml
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;
+charset=UTF-8" />
+    <link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link type="text/css" th:href="@{/webjars/bootstrap/3.3.6/css/bootstrap.min.css} " rel="stylesheet">
+</head>
+<body>
+<div th:if="${errorMessage!=null}"
+     style="color:red;font-style:italic" th:utext="${errorMessage}">..</div>
+<table>
+    <thead>
+    <tr>
+        <th>nom</th>
+        <th>prenom</th>
+        <th>email</th>
+        <th>date_naiss</th>
+        <th>organisation</th>
+        <th>observation</th>
+        <th>modifier</th>
+        <th>Supprimer</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="participant : ${participants}">
+        <td th:text="${participant.getNom()}" />
+        <td th:text="${participant.getPrenom()}" />
+        <td th:text="${participant.getEmail()}" />
+        <td th:text="${participant.getDate_naiss()}" />
+        <td th:text="${participant.getOrganisation()}" />
+        <td th:text="${participant.getObservation()}" />
+        <td>
+            <form action="#" th:action="@{'/modify/Participant/{idEvent}/{idParticipant}' (idEvent=${id},idParticipant=${participant.getNum_pers()})}" method="GET">
+                <button> modifier </button>
+            </form>
+        </td>
+        <td>
+            <form action="#" th:action="@{'/delete/Participant/{idEvent}/{idParticipant}' (idEvent=${id},idParticipant=${participant.getNum_pers()})}" method="POST">
+                <button> Supprimer </button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<form th:action="@{/all/Event}" method="GET">
+    <button> Retour </button>
+</form>
+
+</body>
