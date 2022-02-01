@@ -4,21 +4,24 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html;
 charset=UTF-8" />
+    <link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link type="text/css" th:href="@{/webjars/bootstrap/3.3.6/css/bootstrap.min.css} " rel="stylesheet">
 </head>
 <body>
     <div th:if="${errorMessage!=null}"
      style="color:red;font-style:italic" th:utext="${errorMessage}">..</div>
+
     <form action="#" th:action="@{/add/Event}" th:object="${newEventForm}" method="POST">
         <input required type="text" th:field="*{num_event}" hidden/>
-        <input required type="text" th:field="*{intitule}">Intitulé</input>
-        <input required type="text" th:field="*{theme}">Thème</input>
-        <input required type="date" th:field="*{date_debut}">Date de début</input>
-        <input required type="number" th:field="*{duree}">Durée</input>
-        <input required type="number" th:field="*{nb_part_max}">Nombre de participants max</input>
-        <input required type="text" th:field="*{description}">Description</input>
-        <input required type="text" th:field="*{organisateur}">Organisateur</input>
-        <input required type="text" th:field="*{type_even}">Type d'évènement</input>
-        <input type="submit" value="Valider">
+        <div class="form-group row"> <input required type="text" th:field="*{intitule}">Intitulé</input> </div>
+        <div class="form-group row"> <input required type="text" th:field="*{theme}">Thème</input></div>
+        <div class="form-group row"> <input required type="date" th:field="*{date_debut}">Date de début</input></div>
+        <div class="form-group row"> <input required type="number" th:field="*{duree}">Durée</input></div>
+        <div class="form-group row"> <input required type="number" th:field="*{nb_part_max}">Nombre de participants max</input></div>
+        <div class="form-group row"> <input required type="text" th:field="*{description}">Description</input></div>
+        <div class="form-group row"> <input required type="text" th:field="*{organisateur}">Organisateur</input></div>
+        <div class="form-group row"> <input required type="text" th:field="*{type_even}">Type d'évènement</input></div>
+        <div class="form-group row"> <input type="submit" value="Valider"> </div>
     </form>
 </body>
 </html>
