@@ -13,12 +13,12 @@ charset=UTF-8" />
      style="color:red;font-style:italic" th:utext="${errorMessage}">..</div>
 <form action="#" th:action="@{'/add/Participant/{id}' (id=${id})}" th:object="${newParticipantForm}" method="POST">
     <input required type="text" th:field="*{num_pers}" hidden/>
-    <input required type="text" th:field="*{nom}">Nom</input>
-    <input required type="text" th:field="*{prenom}">Prénom</input>
-    <input required type="text" th:field="*{email}">email</input>
-    <input required type="date" th:field="*{date_naiss}">Date de naissance</input>
-    <input required type="text" th:field="*{organisation}">Organisation</input>
-    <input required type="text" th:field="*{observation}">Observation</input>
+    <div class="form-group row"><label>Nom</label><input required type="text" th:field="*{nom}"/></div>
+    <div class="form-group row"><label>Prénom</label><input required type="text" th:field="*{prenom}"/></div>
+    <div class="form-group row"><label>email</label><input required type="text" th:field="*{email}"/></div>
+    <div class="form-group row"> <label>Date de naissance</label><input required type="date" th:field="*{date_naiss}"/></div>
+    <div class="form-group row"> <label>Organisation</label><input required type="text" th:field="*{organisation}"/></div>
+    <div class="form-group row"> <label>Observation</label><input required type="text" th:field="*{observation}"/></div>
     <input type="submit" value="Valider">
 </form>
 </body>

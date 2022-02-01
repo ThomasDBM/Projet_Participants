@@ -13,15 +13,17 @@ charset=UTF-8" />
      style="color:red;font-style:italic" th:utext="${errorMessage}">..</div>
 <form action="#" th:action="@{/modify/Event}" th:object="${modifyEventForm}" method="POST">
     <input required type="text" th:field="*{num_event}" th:value="${modifyEventForm.getNum_event()}" hidden/>
-    <input required type="text" th:field="*{intitule}" th:value="${modifyEventForm.getIntitule()}">Intitulé</input>
-    <input required type="text" th:field="*{theme}" th:value="${modifyEventForm.getTheme()}">Thème</input>
-    <input required type="date" th:field="*{date_debut}" th:value="${modifyEventForm.getDate_debut()}">Date de début</input>
-    <input required type="number" th:field="*{duree}" th:value="${modifyEventForm.getDuree()}">Durée</input>
-    <input required type="number" th:field="*{nb_part_max}" th:value="${modifyEventForm.getNb_part_max()}">Nombre de participants max</input>
-    <input required type="text" th:field="*{description}" th:value="${modifyEventForm.getDescription()}">Description</input>
-    <input required type="text" th:field="*{organisateur}" th:value="${modifyEventForm.getOrganisateur()}">Organisateur</input>
-    <input required type="text" th:field="*{type_even}" th:value="${modifyEventForm.getType_even()}">Type d'évènement</input>
-    <input type="submit" value="Valider">
+    <div class="form-group row"> <label>Intitulé</label><input required type="text" th:field="*{intitule}" th:value="${modifyEventForm.getIntitule()}"></input> </div>
+    <div class="form-group row"> <label>Thème</label><input required type="text" th:field="*{theme}" th:value="${modifyEventForm.getTheme()}"></input></div>
+    <div class="form-group row"> <label>Date de début</label><input required type="date" th:field="*{date_debut}" th:value="${modifyEventForm.getDate_debut()}"></input></div>
+    <div class="form-group row"> <label>Durée</label><input required type="number" th:field="*{duree}" th:value="${modifyEventForm.getDuree()}"></input></div>
+    <div class="form-group row"> <label>Nombre de participants max</label><input required type="number" th:field="*{nb_part_max}" th:value="${modifyEventForm.getNb_part_max()}"></input></div>
+    <div class="form-group row"> <label>Description</label><input required type="text" th:field="*{description}" th:value="${modifyEventForm.getDescription()}"></input></div>
+    <div class="form-group row"> <label>Organisateur</label><input required type="text" th:field="*{organisateur}" th:value="${modifyEventForm.getOrganisateur()}"></input></div>
+    <div class="form-group row"> <label>Type d'évènement</label><input required type="text" th:field="*{type_even}" th:value="${modifyEventForm.getType_even()}"></input></div>
+    <div class="form-group row"> <input type="submit" value="Valider"> </div>
 </form>
 </body>
 </html>
+
+
